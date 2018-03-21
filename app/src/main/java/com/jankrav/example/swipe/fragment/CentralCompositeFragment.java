@@ -14,6 +14,8 @@ import com.jankrav.example.swipe.R;
 import com.jankrav.example.swipe.adapter.FragmentsClassesPagerAdapter;
 import com.jankrav.example.swipe.event.EventBus;
 import com.jankrav.example.swipe.event.PageChangedEvent;
+import com.jankrav.example.swipe.fragment.right.CentralRightFragment;
+import com.jankrav.example.swipe.fragment.right.CompositiveRightFragment;
 
 /**
  * Fragment to manage the horizontal pages (left, central, right) of the 5 pages application navigation (top, center,
@@ -71,10 +73,8 @@ public class CentralCompositeFragment extends Fragment {
 		ArrayList<Class<? extends Fragment>> pages = new ArrayList<Class<? extends Fragment>>();
 		pages.add(LeftFragment.class);
 		pages.add(CentralFragment.class);
-		pages.add(RightFragment.class);
+		pages.add(CompositiveRightFragment.class);
 		mCentralPageIndex = pages.indexOf(CentralFragment.class);
 		mHorizontalPager.setAdapter(new FragmentsClassesPagerAdapter(getChildFragmentManager(), getActivity(), pages));
-
-
 	}
 }

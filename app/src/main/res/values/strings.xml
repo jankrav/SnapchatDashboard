@@ -7,6 +7,11 @@
     <string name="center">Home</string>
     <string name="top">Profile</string>
     <string name="left">Settings</string>
-    <string name="right">More</string>
+    <string name="right_central">More</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="right_top">Top More</string>
+    <string name="right_bottom">Bottom More</string>
 
 </resources>

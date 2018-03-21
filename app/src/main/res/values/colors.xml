@@ -3,7 +3,9 @@
 
     <color name="green">#AA00FF00</color>
     <color name="blue">#33B5E5</color>
-    <color name="red">#FF0000</color>
+    <color name="red_middle">#FF0000</color>
+    <color name="red_light">#ef2525</color>
+    <color name="red_black">#b40303</color>
     <color name="yellow">#FFFF00</color>
     <color name="purple">#AAFF00FF</color>
 
