@@ -1,0 +1,24 @@
+<com.jankrav.example.swipe.view.VerticalPager xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_right_vertical_pager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <fragment
+        android:id="@+id/right_top_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.jankrav.example.swipe.fragment.right.TopRightFragment" />
+
+    <fragment
+        android:id="@+id/right_central_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.jankrav.example.swipe.fragment.right.CentralRightFragment" />
+
+    <fragment
+        android:id="@+id/right_bottom_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.jankrav.example.swipe.fragment.right.BottomRightFragment" />
+
+</com.jankrav.example.swipe.view.VerticalPager>

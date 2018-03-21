@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:text="@string/right"
+                android:text="@string/right_central"
                 android:background="@android:color/transparent"
                 android:layout_margin="5dp"
                 />
