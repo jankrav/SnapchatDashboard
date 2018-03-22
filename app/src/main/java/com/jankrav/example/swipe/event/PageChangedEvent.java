@@ -5,37 +5,19 @@ package com.jankrav.example.swipe.event;
  * page to the left page.
  */
 public class PageChangedEvent {
+    /**
+     * @param hasVerticalNeighbors true if the current selected page has vertical (below and/or above) neighbor pages, false - if not.
+     */
+    public PageChangedEvent(boolean hasVerticalNeighbors) {
+        mHasVerticalNeighbors = hasVerticalNeighbors;
+    }
 
-	// -----------------------------------------------------------------------
-	//
-	// Constructors
-	//
-	// -----------------------------------------------------------------------
-	/**
-	 * @param hasVerticalNeighbors
-	 *            true if the current selected page has vertical (below and/or above) neighbor pages, false - if not.
-	 */
-	public PageChangedEvent(boolean hasVerticalNeighbors) {
-		mHasVerticalNeighbors = hasVerticalNeighbors;
-	}
+    private boolean mHasVerticalNeighbors = true;
 
-	// -----------------------------------------------------------------------
-	//
-	// Fields
-	//
-	// -----------------------------------------------------------------------
-	private boolean mHasVerticalNeighbors = true;
-
-	// -----------------------------------------------------------------------
-	//
-	// Methods
-	//
-	// -----------------------------------------------------------------------
-	/**
-	 * @return true if the page has vertical (below and/or above) neighbor pages, false - if not.
-	 */
-	public boolean hasVerticalNeighbors() {
-		return mHasVerticalNeighbors;
-	}
-
+    /**
+     * @return true if the page has vertical (below and/or above) neighbor pages, false - if not.
+     */
+    public boolean hasVerticalNeighbors() {
+        return mHasVerticalNeighbors;
+    }
 }

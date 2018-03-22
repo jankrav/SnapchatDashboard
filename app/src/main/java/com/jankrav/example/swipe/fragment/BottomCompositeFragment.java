@@ -1,6 +1,7 @@
 package com.jankrav.example.swipe.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -15,13 +16,12 @@ import com.jankrav.example.swipe.event.PageChangedEvent;
 import java.util.ArrayList;
 
 public class BottomCompositeFragment extends Fragment {
-
-    public ViewPager mHorizontalPager;
-    private int mCentralPageIndex = 0;
+    private ViewPager mHorizontalPager;
+    private int mBottomPageIndex = 0;
     private ViewPager.OnPageChangeListener mPagerChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageSelected(int position) {
-            EventBus.getInstance().post(new PageChangedEvent(mCentralPageIndex == position));
+            EventBus.getInstance().post(new PageChangedEvent(mBottomPageIndex == position));
         }
 
         @Override
@@ -35,21 +35,21 @@ public class BottomCompositeFragment extends Fragment {
     };
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_bottom_composite, container, false);
         findViews(fragmentView);
         return fragmentView;
     }
 
     private void findViews(View fragmentView) {
-        mHorizontalPager = (ViewPager) fragmentView.findViewById(R.id.fragment_composite_bottom_pager);
+        mHorizontalPager = fragmentView.findViewById(R.id.fragment_composite_bottom_pager);
         initViews();
     }
 
     private void initViews() {
         populateHozizontalPager();
-        mHorizontalPager.setCurrentItem(mCentralPageIndex);
-        mHorizontalPager.setOnPageChangeListener(mPagerChangeListener);
+        mHorizontalPager.setCurrentItem(mBottomPageIndex);
+        mHorizontalPager.addOnPageChangeListener(mPagerChangeListener);
     }
 
     private void populateHozizontalPager() {
@@ -57,7 +57,13 @@ public class BottomCompositeFragment extends Fragment {
         pages.add(LeftFragment.class);
         pages.add(BottomFragment.class);
         pages.add(RightFragment.class);
-        mCentralPageIndex = pages.indexOf(BottomFragment.class);
+        mBottomPageIndex = pages.indexOf(BottomFragment.class);
         mHorizontalPager.setAdapter(new FragmentsClassesPagerAdapter(getChildFragmentManager(), getActivity(), pages));
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mHorizontalPager.removeOnPageChangeListener(mPagerChangeListener);
     }
 }

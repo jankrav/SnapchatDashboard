@@ -7,7 +7,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 
 import com.jankrav.example.swipe.R;
 import com.jankrav.example.swipe.adapter.FragmentsClassesPagerAdapter;
@@ -21,18 +20,16 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class TopCompositeFragment extends Fragment {
-
-    public ViewPager mHorizontalPager;
-    private int mCentralPageIndex = 0;
+    private ViewPager mHorizontalPager;
+    private int mTopPageIndex = 0;
     private ViewPager.OnPageChangeListener mPagerChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageSelected(int position) {
-            EventBus.getInstance().post(new PageChangedEvent(mCentralPageIndex == position));
+            EventBus.getInstance().post(new PageChangedEvent(mTopPageIndex == position));
         }
 
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
         }
 
         @Override
@@ -49,14 +46,14 @@ public class TopCompositeFragment extends Fragment {
     }
 
     private void findViews(View fragmentView) {
-        mHorizontalPager = (ViewPager) fragmentView.findViewById(R.id.fragment_composite_top_pager);
+        mHorizontalPager = fragmentView.findViewById(R.id.fragment_composite_top_pager);
         initViews();
     }
 
     private void initViews() {
         populateHozizontalPager();
-        mHorizontalPager.setCurrentItem(mCentralPageIndex);
-        mHorizontalPager.setOnPageChangeListener(mPagerChangeListener);
+        mHorizontalPager.setCurrentItem(mTopPageIndex);
+        mHorizontalPager.addOnPageChangeListener(mPagerChangeListener);
     }
 
     private void populateHozizontalPager() {
@@ -64,7 +61,13 @@ public class TopCompositeFragment extends Fragment {
         pages.add(LeftFragment.class);
         pages.add(TopFragment.class);
         pages.add(RightFragment.class);
-        mCentralPageIndex = pages.indexOf(TopFragment.class);
+        mTopPageIndex = pages.indexOf(TopFragment.class);
         mHorizontalPager.setAdapter(new FragmentsClassesPagerAdapter(getChildFragmentManager(), getActivity(), pages));
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mHorizontalPager.removeOnPageChangeListener(mPagerChangeListener);
     }
 }
