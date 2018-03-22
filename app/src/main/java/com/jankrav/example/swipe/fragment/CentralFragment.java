@@ -49,14 +49,6 @@ public class CentralFragment extends Fragment {
 			}
 		});
 
-		/*imgAppIcon=(ImageView)fragmentView.findViewById(R.id.);
-		imgAppIcon.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				mCenterActivity.mVerticalPager.snapToPage(0);
-			}
-		});*/
-
 		btnProfile=(Button)fragmentView.findViewById(R.id.btnProfile);
 		btnProfile.setOnClickListener(new View.OnClickListener() {
 			@Override
