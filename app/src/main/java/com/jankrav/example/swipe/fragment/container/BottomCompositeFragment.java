@@ -1,4 +1,4 @@
-package com.jankrav.example.swipe.fragment;
+package com.jankrav.example.swipe.fragment.container;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,23 +10,27 @@ import android.view.ViewGroup;
 
 import com.jankrav.example.swipe.R;
 import com.jankrav.example.swipe.adapter.FragmentsClassesPagerAdapter;
-import com.jankrav.example.swipe.event.EventBus;
+import com.jankrav.example.swipe.event.EventManager;
 import com.jankrav.example.swipe.event.PageChangedEvent;
+import com.jankrav.example.swipe.fragment.view.BottomFragment;
+import com.jankrav.example.swipe.fragment.view.LeftFragment;
+import com.jankrav.example.swipe.fragment.view.RightFragment;
 
 import java.util.ArrayList;
 
 public class BottomCompositeFragment extends Fragment {
     private ViewPager mHorizontalPager;
     private int mBottomPageIndex = 0;
+    private EventManager eventManager = EventManager.getInstance();
     private ViewPager.OnPageChangeListener mPagerChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageSelected(int position) {
-            EventBus.getInstance().post(new PageChangedEvent(mBottomPageIndex == position));
+            PageChangedEvent event = new PageChangedEvent(mBottomPageIndex == position);
+            eventManager.post(event);
         }
 
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
         }
 
         @Override

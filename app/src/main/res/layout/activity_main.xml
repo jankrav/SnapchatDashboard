@@ -8,18 +8,18 @@
         android:id="@+id/main_top_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        class="com.jankrav.example.swipe.fragment.TopCompositeFragment" />
+        class="com.jankrav.example.swipe.fragment.container.TopCompositeFragment" />
 
     <fragment
         android:id="@+id/main_central_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        class="com.jankrav.example.swipe.fragment.CentralCompositeFragment" />
+        class="com.jankrav.example.swipe.fragment.container.CentralCompositeFragment" />
 
     <fragment
         android:id="@+id/main_bottom_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        class="com.jankrav.example.swipe.fragment.BottomCompositeFragment" />
+        class="com.jankrav.example.swipe.fragment.container.BottomCompositeFragment" />
 
 </com.jankrav.example.swipe.view.VerticalPager>
